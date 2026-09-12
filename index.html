@@ -805,7 +805,7 @@ footer{background:linear-gradient(160deg,var(--charcoal) 0%,#150e09 100%)}
 .faq-item.open .faq-q{background:var(--beige)}
 .faq-a{display:none;padding:.2rem 1.4rem 1.2rem;font-size:.88rem;color:var(--muted);line-height:1.82}
 .faq-item.open .faq-a{display:block}
-#dust{position:fixed;inset:0;z-index:2;pointer-events:none;mix-blend-mode:multiply}
+#dust{position:fixed;inset:0;z-index:2;pointer-events:none;mix-blend-mode:screen}
 @media(prefers-reduced-motion:reduce){#dust{display:none}
   .treats::before,.ben::after,.ci::before,#sobre::before,#sobre::after{animation:none!important}}
 
@@ -2083,11 +2083,11 @@ if('IntersectionObserver' in window){
 <script>
 (function(){
   var c=document.getElementById('dust');if(!c)return;
-  var ctx=c.getContext('2d'),W,H,pts=[],N=22;
+  var ctx=c.getContext('2d'),W,H,pts=[],N=42;
   var COLS=['#C5A87C','#d9c49e','#9e7f52','#B8945A','#C5A87C','#d9c49e','#9e7f52'];
   function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight}
   window.addEventListener('resize',resize);resize();
-  function mk(){return{x:Math.random()*W,y:H+10,vx:(Math.random()-.5)*.35,vy:-(Math.random()*.9+.35),life:0,max:Math.random()*280+160,r:Math.random()*2+.8,col:COLS[Math.floor(Math.random()*COLS.length)]}}
+  function mk(){return{x:Math.random()*W,y:H+10,vx:(Math.random()-.5)*.35,vy:-(Math.random()*.9+.35),life:0,max:Math.random()*280+160,r:Math.random()*2.6+1.3,col:COLS[Math.floor(Math.random()*COLS.length)]}}
   for(var i=0;i<N;i++){var p=mk();p.y=Math.random()*H;pts.push(p)}
   var paused=false;
   document.addEventListener('visibilitychange',function(){paused=document.hidden});
@@ -2098,8 +2098,8 @@ if('IntersectionObserver' in window){
       var p=pts[i];p.x+=p.vx;p.y+=p.vy;p.life++;
       if(p.life>p.max||p.y<-10){pts[i]=mk();continue}
       var t=p.life/p.max,op=t<.2?t/.2:t>.8?(1-t)/.2:1;
-      ctx.save();ctx.globalAlpha=op*.28;
-      ctx.shadowColor=p.col;ctx.shadowBlur=10;
+      ctx.save();ctx.globalAlpha=op*.6;
+      ctx.shadowColor=p.col;ctx.shadowBlur=15;
       ctx.fillStyle=p.col;
       ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
       ctx.restore();
