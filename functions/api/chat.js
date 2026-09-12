@@ -12,6 +12,8 @@ const NEGOCIO = {
   servicios: `- HIFU + Diatermia (radiofrecuencia): reafirmante facial y corporal, por ejemplo abdomen flácido o descolgado
 - Limpieza Facial en cabina, ambiente relajante
 - Uñas de Gel (manicura)
+- Depilación con Cera (cejas, labio, piernas, zonas íntimas)
+- Pestañas y Cejas (extensión, lifting, diseño con hilo, tinte)
 - Beauty Salon: clínica médico estética y salón de belleza en uno, pregunta por cualquier otro servicio
 No hay precios fijos publicados: para cualquier precio, di que depende del tratamiento/zona y que se confirma por WhatsApp o en el centro.`,
   instrucciones_extra: `- No inventes precios en euros bajo ningún concepto, no los tenemos publicados

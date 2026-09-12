@@ -53,7 +53,7 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
 #nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.3rem 0;transition:background .4s var(--ease),padding .3s var(--ease),box-shadow .3s var(--ease)}
 #nav.s{background:rgba(253,248,243,.96);backdrop-filter:blur(16px);padding:.8rem 0;box-shadow:0 1px 28px rgba(60,30,10,.07)}
 .ni{display:flex;align-items:center;gap:1.5rem}
-.nl{display:flex;align-items:center;gap:.6rem;margin-right:auto}
+.nl{display:flex;align-items:center;gap:.6rem;margin-right:auto;flex-shrink:0}
 .nl-logo{width:38px;height:38px;object-fit:contain;background:#fff;border-radius:50%;padding:3px;flex-shrink:0}
 .na{font-family:var(--serif);font-size:2rem;font-weight:600;color:#fff;letter-spacing:.18em;line-height:1;transition:color var(--t)}
 #nav.s .na{color:var(--charcoal)}
@@ -64,7 +64,7 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
 .nla::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--gold);transition:width var(--t)}
 .nla:hover{color:var(--gold)}.nla:hover::after{width:100%}
 .nls.s .nla:hover{color:var(--charcoal)}
-.nca{background:var(--gold);color:#fff;padding:.52rem 1.3rem;border-radius:8px;font-size:.76rem;font-weight:500;letter-spacing:.08em;border:1px solid var(--gold);transition:var(--t);white-space:nowrap}
+.nca{background:var(--gold);color:#fff;padding:.52rem 1.3rem;border-radius:8px;font-size:.76rem;font-weight:500;letter-spacing:.08em;border:1px solid var(--gold);transition:var(--t);white-space:nowrap;flex-shrink:0}
 .nca:hover{background:var(--gdk);transform:translateY(-1px);box-shadow:0 6px 20px rgba(197,168,124,.4)}
 .hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
 .hbg span{display:block;width:22px;height:1.5px;background:#fff;transition:var(--t)}
@@ -130,10 +130,12 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
 .sec{padding:clamp(5rem,10vw,8rem) 0}
 #sobre{position:relative;overflow:hidden}
 #sobre::before{content:'';position:absolute;top:-12%;right:-10%;width:46%;padding-bottom:46%;
-  border:1px solid rgba(197,168,124,.28);border-radius:50%;pointer-events:none;z-index:0}
+  border:1px solid rgba(197,168,124,.28);border-radius:50%;pointer-events:none;z-index:0;
+  animation:ringSpin 40s linear infinite}
 #sobre::after{content:'';position:absolute;bottom:-18%;left:-8%;width:32%;padding-bottom:32%;
   background:radial-gradient(circle,rgba(197,168,124,.14) 0%,transparent 72%);
-  border-radius:50%;pointer-events:none;z-index:0}
+  border-radius:50%;pointer-events:none;z-index:0;
+  animation:glowDrift 14s ease-in-out infinite}
 #sobre .w{position:relative;z-index:1}
 .sec-hdr{text-align:center;margin-bottom:clamp(2.5rem,5vw,3.8rem)}
 .sec-sub{font-size:.97rem;color:var(--muted);max-width:570px;margin:0 auto;line-height:1.82}
@@ -160,7 +162,11 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
 
 /* ─── TRATAMIENTOS ─── */
 .treats{padding:clamp(5rem,10vw,8rem) 0;background:var(--beige);position:relative;overflow:hidden}
-.treats::before{content:'PURY RUIZ';font-family:var(--serif);font-size:20vw;font-weight:600;color:rgba(197,168,124,.04);letter-spacing:.1em;position:absolute;top:50%;right:-2%;transform:translateY(-50%);white-space:nowrap;pointer-events:none;line-height:1}
+.treats::before{content:'PURY RUIZ';font-family:var(--serif);font-size:20vw;font-weight:600;color:rgba(197,168,124,.04);letter-spacing:.1em;position:absolute;top:50%;right:-2%;transform:translateY(-50%);white-space:nowrap;pointer-events:none;line-height:1;animation:bgBreatheY 12s ease-in-out infinite}
+@keyframes bgBreatheY{0%,100%{opacity:.6;transform:translateY(-50%) scale(1)}50%{opacity:1;transform:translateY(-50%) scale(1.04)}}
+@keyframes bgBreathe{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
+@keyframes ringSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes glowDrift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(3%,-4%) scale(1.12)}}
 .tgr{display:grid;grid-template-columns:repeat(auto-fill,minmax(262px,1fr));gap:1.2rem}
 .tc{background:#fff;border-radius:16px;padding:1.75rem;border:1px solid var(--gbd);transition:var(--t);position:relative;overflow:hidden;cursor:default}
 .tc::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--glt));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
@@ -176,7 +182,7 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
 
 /* ─── BENEFITS ─── */
 .ben{padding:clamp(5rem,10vw,8rem) 0;background:var(--charcoal);position:relative;overflow:hidden}
-.ben::after{content:'PURY RUIZ';font-family:var(--serif);font-size:22vw;font-weight:600;color:rgba(255,255,255,.018);letter-spacing:.1em;position:absolute;bottom:-4%;left:-2%;white-space:nowrap;pointer-events:none;line-height:1}
+.ben::after{content:'PURY RUIZ';font-family:var(--serif);font-size:22vw;font-weight:600;color:rgba(255,255,255,.018);letter-spacing:.1em;position:absolute;bottom:-4%;left:-2%;white-space:nowrap;pointer-events:none;line-height:1;animation:bgBreathe 16s ease-in-out infinite}
 .bgr{display:grid;grid-template-columns:1fr 1.5fr;gap:4.5rem;align-items:center;position:relative;z-index:1}
 .bdsc{font-size:.93rem;color:rgba(255,255,255,.42);line-height:1.88;margin-bottom:2rem}
 .bog{display:inline-flex;align-items:center;gap:.55rem;background:transparent;color:var(--glt);padding:.82rem 1.9rem;border-radius:10px;font-size:.83rem;font-weight:400;letter-spacing:.07em;border:1.5px solid rgba(197,168,124,.38);transition:var(--t)}
@@ -190,7 +196,8 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
 
 /* ─── TESTIMONIOS ─── */
 .tes{padding:clamp(5rem,10vw,8rem) 0;background:var(--cream)}
-.tegr{display:grid;grid-template-columns:repeat(auto-fill,minmax(315px,1fr));gap:1.2rem}
+.tegr{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media(max-width:900px){.tegr{grid-template-columns:1fr 1fr}}
 .tec{background:#fff;border:1px solid var(--gbd);border-radius:16px;padding:1.9rem;transition:var(--t);position:relative}
 .tec::before{content:'"';font-family:var(--serif);font-size:7rem;color:rgba(197,168,124,.08);position:absolute;top:-.8rem;left:1rem;line-height:1;pointer-events:none}
 .tec:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(60,30,10,.09)}
@@ -233,7 +240,7 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
 .con{padding:clamp(5rem,10vw,8rem) 0;background:var(--beige)}
 .cogr{display:grid;grid-template-columns:1fr 1.4fr;gap:2.4rem;align-items:start}
 .ci{background:#fff;border:1px solid var(--gbd);border-radius:18px;padding:1.9rem;overflow:hidden;position:relative}
-.ci::before{content:'PURY RUIZ';font-family:var(--serif);font-size:7rem;font-weight:600;color:rgba(197,168,124,.05);letter-spacing:.15em;position:absolute;bottom:-1.2rem;right:-.8rem;line-height:1;pointer-events:none;user-select:none}
+.ci::before{content:'PURY RUIZ';font-family:var(--serif);font-size:7rem;font-weight:600;color:rgba(197,168,124,.05);letter-spacing:.15em;position:absolute;bottom:-1.2rem;right:-.8rem;line-height:1;pointer-events:none;user-select:none;animation:bgBreathe 10s ease-in-out infinite}
 .cilg{margin-bottom:1.4rem;padding-bottom:1.1rem;border-bottom:1px solid var(--gbd)}
 .cila{font-family:var(--serif);font-size:1.8rem;font-weight:600;color:var(--charcoal);letter-spacing:.18em;line-height:1;display:block}
 .cils{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:block;margin-top:.25rem}
@@ -799,7 +806,8 @@ footer{background:linear-gradient(160deg,var(--charcoal) 0%,#150e09 100%)}
 .faq-a{display:none;padding:.2rem 1.4rem 1.2rem;font-size:.88rem;color:var(--muted);line-height:1.82}
 .faq-item.open .faq-a{display:block}
 #dust{position:fixed;inset:0;z-index:2;pointer-events:none;mix-blend-mode:multiply}
-@media(prefers-reduced-motion:reduce){#dust{display:none}}
+@media(prefers-reduced-motion:reduce){#dust{display:none}
+  .treats::before,.ben::after,.ci::before,#sobre::before,#sobre::after{animation:none!important}}
 
 /* ══════════════════════════════════════════
    PURY RUIZ — LUXURY UPGRADE + ANIMATIONS
@@ -814,7 +822,7 @@ footer{background:linear-gradient(160deg,var(--charcoal) 0%,#150e09 100%)}
 }
 
 /* ── Botón IA en nav ── */
-.nai{display:flex;align-items:center;gap:.45rem;
+.nai{display:flex;align-items:center;gap:.45rem;flex-shrink:0;
   background:transparent;color:var(--glt);
   border:1.5px solid rgba(197,168,124,.45);
   border-radius:8px;padding:.48rem 1.05rem;
@@ -1395,7 +1403,7 @@ body{background:radial-gradient(ellipse at 15% 0%,rgba(197,168,124,.07) 0%,trans
     <div class="hbtns r d3">
       <a href="tel:+34678250374" class="bg">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        Pedir Cita · 615&nbsp;32&nbsp;21&nbsp;65
+        Pedir Cita · 678&nbsp;25&nbsp;03&nbsp;74
       </a>
       <a href="#tratamientos" class="bow">Ver Tratamientos</a>
     </div>
@@ -1548,8 +1556,12 @@ body{background:radial-gradient(ellipse at 15% 0%,rgba(197,168,124,.07) 0%,trans
       <div class="tcn">02</div><div class="tci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><h3 class="tct">Limpieza Facial</h3><p class="tcd">Cabina de tratamientos relajante para cuidar la piel del rostro en profundidad.</p><a href="tel:+34678250374" class="tcc">Consultar <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
       <div class="tc r d2"><div class="tc-img"><img src="unas-manicura.webp" alt="Uñas de Gel" loading="lazy"></div>
       <div class="tcn">03</div><div class="tci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12s1 4 4 4 4-4 4-4"/><path d="M9 9h.01M15 9h.01"/></svg></div><h3 class="tct">Uñas de Gel</h3><p class="tcd">Manicura de gel, con manos que parecen recién salidas de otra persona.</p><a href="tel:+34678250374" class="tcc">Consultar <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="tc r"><div class="tc-img"><img src="corporales.jpg" alt="Beauty Salon" loading="lazy"></div>
-      <div class="tcn">04</div><div class="tci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><h3 class="tct">Beauty Salon</h3><p class="tcd">Clínica médico estética y salón de belleza en uno. Pregúntanos por el resto de servicios.</p><a href="tel:+34678250374" class="tcc">Consultar <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      <div class="tc r"><div class="tc-img"><img src="depilacion-cera.jpg" alt="Depilación con Cera" loading="lazy"></div>
+      <div class="tcn">04</div><div class="tci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="tct">Depilación con Cera</h3><p class="tcd">Cejas, labio, piernas y zonas íntimas, hecha con cuidado y rapidez.</p><a href="tel:+34678250374" class="tcc">Consultar <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      <div class="tc r d1"><div class="tc-img"><img src="pestanas-cejas.jpg" alt="Pestañas y Cejas" loading="lazy"></div>
+      <div class="tcn">05</div><div class="tci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a5 5 0 015 5v3a5 5 0 01-10 0V7a5 5 0 015-5z"/><path d="M19 11v1a7 7 0 01-14 0v-1"/></svg></div><h3 class="tct">Pestañas y Cejas</h3><p class="tcd">Extensión y lifting de pestañas, diseño de cejas con hilo y tinte.</p><a href="tel:+34678250374" class="tcc">Consultar <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      <div class="tc r d2"><div class="tc-img"><img src="beauty-salon.jpeg" alt="Beauty Salon" loading="lazy"></div>
+      <div class="tcn">06</div><div class="tci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><h3 class="tct">Beauty Salon</h3><p class="tcd">Clínica médico estética y salón de belleza en uno. Pregúntanos por el resto de servicios.</p><a href="tel:+34678250374" class="tcc">Consultar <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
     </div>
   </div>
 </section>
@@ -1562,6 +1574,8 @@ body{background:radial-gradient(ellipse at 15% 0%,rgba(197,168,124,.07) 0%,trans
       <div class="pi"><div class="pi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div><span class="pi-name">HIFU y Diatermia</span><span class="pi-price pi-custom">consultar</span></div>
       <div class="pi"><div class="pi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><span class="pi-name">Limpieza Facial</span><span class="pi-price pi-custom">consultar</span></div>
       <div class="pi"><div class="pi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12s1 4 4 4 4-4 4-4"/></svg></div><span class="pi-name">Uñas de Gel</span><span class="pi-price pi-custom">consultar</span></div>
+      <div class="pi"><div class="pi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span class="pi-name">Depilación con Cera</span><span class="pi-price pi-custom">consultar</span></div>
+      <div class="pi"><div class="pi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a5 5 0 015 5v3a5 5 0 01-10 0V7a5 5 0 015-5z"/><path d="M19 11v1a7 7 0 01-14 0v-1"/></svg></div><span class="pi-name">Pestañas y Cejas</span><span class="pi-price pi-custom">consultar</span></div>
       <div class="pi"><div class="pi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><span class="pi-name">Beauty Salon</span><span class="pi-price pi-custom">consultar</span></div>
     </div>
     <div style="text-align:center;margin-top:2.4rem"><a href="tel:+34678250374" class="bg r"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Pedir cita</a></div>
@@ -1774,7 +1788,7 @@ body{background:radial-gradient(ellipse at 15% 0%,rgba(197,168,124,.07) 0%,trans
       <div class="fb"><div class="fba">PURY RUIZ</div><span class="fbs">clínica médico estética</span><p>Clínica médico estética y salón de belleza en Ogíjares: HIFU, diatermia, limpieza facial y uñas.</p><a href="tel:+34678250374" class="fph">678 25 03 74</a></div>
       <div class="fc"><h4>Tratamientos</h4><ul><li><a href="#tratamientos">Depilación Láser</a></li><li><a href="#tratamientos">Uñas y Manicura</a></li><li><a href="#tratamientos">Faciales Avanzados</a></li><li><a href="#tratamientos">Pestañas y Cejas</a></li><li><a href="#tratamientos">Maquillaje</a></li><li><a href="#tratamientos">Corporal</a></li></ul></div>
       <div class="fc"><h4>Centro</h4><ul><li><a href="#sobre">Sobre nosotras</a></li><li><a href="#testimonios">Testimonios</a></li><li><a href="#galeria">Galería</a></li><li><a href="#contacto">Contacto</a></li></ul><h4 style="margin-top:1.4rem">Legal</h4><ul><li><a href="#">Aviso legal</a></li><li><a href="#">Privacidad</a></li><li><a href="#">Cookies</a></li></ul></div>
-      <div class="fc"><h4>Visítanos</h4><p style="font-size:.8rem;color:rgba(255,255,255,.38);line-height:1.75;margin-bottom:.65rem">Carr. Dílar, s/n<br>18151 Ogíjares, Granada</p><p style="font-size:.8rem;color:rgba(255,255,255,.38);line-height:1.75;margin-bottom:.9rem">Lun-Vie: 9:00-21:00<br>Sab: 9:00-14:00</p><a href="tel:+34678250374" class="fcta">Pedir Cita</a></div>
+      <div class="fc"><h4>Visítanos</h4><p style="font-size:.8rem;color:rgba(255,255,255,.38);line-height:1.75;margin-bottom:.65rem">Carr. Dílar, s/n<br>18151 Ogíjares, Granada</p><p style="font-size:.8rem;color:rgba(255,255,255,.38);line-height:1.75;margin-bottom:.9rem">Horario a confirmar<br>por WhatsApp</p><a href="tel:+34678250374" class="fcta">Pedir Cita</a></div>
     </div>
   </div>
   <div class="fb2"><div class="w"><p>© <span id="yr"></span> Pury Ruiz Clínica Médico Estética · Ogíjares</p><p>Todos los derechos reservados</p></div></div>
@@ -2883,6 +2897,28 @@ if('IntersectionObserver' in window){
         ]
       },
 
+      // ───── TRATAMIENTO: DEPILACIÓN CON CERA ─────
+      { id: 'est_cera',
+        keywords: ['cera','depilacion cera','cejas cera','labio','zona intima','depilacion tradicional'],
+        response: () =>
+          `Depilación con cera de cejas, labio, piernas y zonas íntimas, hecha con cuidado y rapidez.\n\nTe decimos precio y hueco disponible por WhatsApp.`,
+        quickReplies: [
+          wa('💬 Pedir cita depilación', prefillCita('Depilación con Cera')),
+          { label: 'Otros tratamientos', send: 'tratamientos' }
+        ]
+      },
+
+      // ───── TRATAMIENTO: PESTAÑAS Y CEJAS ─────
+      { id: 'est_pestanas_cejas',
+        keywords: ['pestanas','extension de pestanas','lifting de pestanas','cejas','diseno de cejas','hilo','tinte cejas'],
+        response: () =>
+          `Hacemos extensión y lifting de pestañas, y diseño de cejas con hilo y tinte.\n\nTe decimos precio y hueco disponible por WhatsApp.`,
+        quickReplies: [
+          wa('💬 Pedir cita pestañas/cejas', prefillCita('Pestañas y Cejas')),
+          { label: 'Otros tratamientos', send: 'tratamientos' }
+        ]
+      },
+
       // ───── BEAUTY SALON / RESTO DE SERVICIOS ─────
       { id: 'est_corporales',
         keywords: ['corporal','corporales','tratamiento corporal','tratamientos corporales','salon de belleza','otros servicios'],
@@ -2898,7 +2934,7 @@ if('IntersectionObserver' in window){
       { id: 'est_tratamientos',
         keywords: ['tratamientos','tratamiento','que tratamientos','que ofreceis','que haceis','servicios','que servicios','que ofreces','catalogo','que tipo'],
         response:
-          `En Pury Ruiz Clínica Médico Estética hacemos:\n\n• HIFU y Diatermia (reafirmante facial y corporal)\n• Limpieza Facial en cabina\n• Uñas de Gel\n• Beauty Salon — pregúntanos por el resto de servicios\n\n¿Sobre cuál te interesa saber más? ✨`,
+          `En Pury Ruiz Clínica Médico Estética hacemos:\n\n• HIFU y Diatermia (reafirmante facial y corporal)\n• Limpieza Facial en cabina\n• Uñas de Gel\n• Depilación con Cera\n• Pestañas y Cejas\n• Beauty Salon — pregúntanos por el resto de servicios\n\n¿Sobre cuál te interesa saber más? ✨`,
         quickReplies: [
           { label: 'HIFU',       send: 'hifu' },
           { label: 'Facial',     send: 'facial' },
