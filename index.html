@@ -2436,6 +2436,13 @@ if('IntersectionObserver' in window){
       left: 16px;
       width: 58px; height: 58px;
     }
+    .cb-teaser {
+      /* El aviso seguía anclado a la posición de escritorio del icono
+         (más abajo) y en móvil eso cae encima de la barra de llamar/WhatsApp. */
+      bottom: calc(90px + env(safe-area-inset-bottom, 0px) + 4px);
+      left: calc(16px + env(safe-area-inset-left, 0px) + 72px);
+      max-width: min(200px, calc(100vw - 16px - 72px - 16px));
+    }
     .cb-window {
       bottom: calc(90px + env(safe-area-inset-bottom, 0px));
       left: 16px;
